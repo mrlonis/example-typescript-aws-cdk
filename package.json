@@ -16,6 +16,7 @@
     "prettier:test": "prettier --check . --ignore-unknown",
     "sync:agent-instructions": "tsx scripts/sync-agent-instructions.ts",
     "sync:agent-instructions:check": "tsx scripts/sync-agent-instructions.ts --check",
+    "synth": "cdk synth",
     "test": "jest",
     "watch": "tsc -w"
   },

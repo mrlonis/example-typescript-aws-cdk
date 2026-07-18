@@ -2,6 +2,7 @@
 !eslint.config.js
 !bin/eslint.config.js
 !lib/eslint.config.js
+!scripts/eslint.config.js
 !test/eslint.config.js
 !jest.config.js
 *.d.ts

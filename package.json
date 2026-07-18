@@ -4,22 +4,65 @@
   "scripts": {
     "build": "tsc",
     "cdk": "cdk",
+    "lint": "npm run lint:bin && npm run lint:lib && npm run lint:test",
+    "lint:bin": "eslint --config bin/eslint.config.js --ext .ts bin",
+    "lint:fix": "npm run lint:bin -- --fix && npm run lint:lib -- --fix && npm run lint:test -- --fix",
+    "lint:lib": "eslint --config lib/eslint.config.js --ext .ts lib",
+    "lint:test": "eslint --config test/eslint.config.js --ext .ts test",
+    "lint-staged": "lint-staged",
+    "prepare": "husky",
+    "prettier": "prettier --write . --ignore-unknown",
+    "prettier:test": "prettier --check . --ignore-unknown",
     "test": "jest",
     "watch": "tsc -w"
+  },
+  "lint-staged": {
+    ".vscode/settings.json": [
+      "sort-json --indent 2 --depth 4",
+      "prettier --write"
+    ],
+    "package.json": [
+      "sort-package-json",
+      "prettier --write"
+    ],
+    "bin/**/*.ts": [
+      "eslint -c ./bin/eslint.config.js --fix"
+    ],
+    "lib/**/*.ts": [
+      "eslint -c ./lib/eslint.config.js --fix"
+    ],
+    "test/**/*.ts": [
+      "eslint -c ./test/eslint.config.js --fix"
+    ],
+    "!({.vscode/settings.json,package.json,bin/**/*.ts,lib/**/*.ts,test/**/*.ts})": [
+      "prettier --write --ignore-unknown"
+    ]
   },
   "dependencies": {
     "aws-cdk-lib": "^2",
     "constructs": "^10"
   },
   "devDependencies": {
+    "@eslint/js": "^9",
     "@swc/core": "^1",
     "@swc/jest": "^0.2",
     "@types/jest": "^30",
     "@types/node": "^26",
     "aws-cdk": "2",
+    "eslint": "^9",
+    "eslint-config-prettier": "^10",
+    "eslint-import-resolver-typescript": "^4",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-prettier": "^5",
+    "husky": "^9",
     "jest": "^30",
+    "lint-staged": "^17",
+    "prettier": "^3",
+    "sort-json": "^2",
+    "sort-package-json": "^4",
     "tsx": "^4",
-    "typescript": "~7.0"
+    "typescript": "^6",
+    "typescript-eslint": "^8"
   },
   "allowScripts": {
     "@swc/core@1.15.43": true,

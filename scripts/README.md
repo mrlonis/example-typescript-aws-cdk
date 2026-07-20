@@ -2,7 +2,7 @@
 
 Node.js tooling scripts for the repository. Each script is written in TypeScript and executed directly via [`tsx`](https://github.com/privatenumber/tsx) — no separate build step required.
 
-Scripts are linted alongside the rest of the project (`npm run lint`) and tested with Vitest (`npm run test:scripts`).
+Scripts are linted alongside the rest of the project (`npm run lint`) and tested with Jest (`npm run test`).
 
 ---
 
@@ -87,7 +87,7 @@ npm run sync:agent-instructions:check
 
 The script has no dependencies on this project beyond Node.js built-ins and `tsx`. To reuse it elsewhere:
 
-1. Copy `scripts/sync-agent-instructions.ts` (and optionally `scripts/sync-agent-instructions.spec.ts`) into the target repo's `scripts/` directory.
+1. Copy `scripts/sync-agent-instructions.ts` (and optionally `test/sync-agent-instructions.test.ts`) into the target repo's `scripts/` directory and `test/` directory, respectively.
 2. Ensure `tsx` is available (`npm install --save-dev tsx`).
 3. Add the npm scripts to `package.json`:
    ```json
